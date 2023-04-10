@@ -1,0 +1,100 @@
+1.	Реализовать набор основных действий для работы с деком в виде программы, имеющей следующий интерфейс:
+Выберите действие:
+1.Добавить элемент в начало
+2.Добавить элемент в конец
+3.Удалить элемент из начала
+4.Удалить элемент с конца
+5.Вывести элемент с номером N
+6.Вывести содержимое дека
+7.Вывести количество элементов
+8.Очистить дек
+9.Выход
+
+
+#include <iostream>
+#include <deque>
+
+using namespace std;
+
+int main() {
+    deque<int> d;
+
+    while (true) {
+        cout << "Выберите действие: " << endl;
+        cout << "1.Добавить элемент в начало" << endl;
+        cout << "2.Добавить элемент в конец" << endl;
+        cout << "3.Удалить элемент из начала" << endl;
+        cout << "4.Удалить элемент с конца" << endl;
+        cout << "5.Вывести элемент с номером N" << endl;
+        cout << "6.Вывести содержимое дека" << endl;
+        cout << "7.Вывести количество элементов" << endl;
+        cout << "8.Очистить дек" << endl;
+        cout << "9.Выход" << endl;
+
+        int choice;
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Введите значение элемента: ";
+                int val1;
+                cin >> val1;
+                d.push_front(val1);
+                break;
+            case 2:
+                cout << "Введите значение элемента: ";
+                int val2;
+                cin >> val2;
+                d.push_back(val2);
+                break;
+            case 3:
+                if (!d.empty()) {
+                    d.pop_front();
+                } else {
+                    cout << "Дек пуст!" << endl;
+                }
+                break;
+            case 4:
+                if (!d.empty()) {
+                    d.pop_back();
+                } else {
+                    cout << "Дек пуст!" << endl;
+                }
+                break;
+            case 5:
+                cout << "Введите номер элемента: ";
+                int index;
+                cin >> index;
+                if (index >= 0 && index < d.size()) {
+                    cout << "Значение элемента: " << d[index] << endl;
+                } else {
+                    cout << "Недопустимый номер элемента!" << endl;
+                }
+                break;
+            case 6:
+                if (!d.empty()) {
+                    cout << "Содержимое дека: ";
+                    for (auto it = d.begin(); it != d.end(); it++) {
+                        cout << *it << " ";
+                    }
+                    cout << endl;
+                } else {
+                    cout << "Дек пуст!" << endl;
+                }
+                break;
+            case 7:
+                cout << "Количество элементов: " << d.size() << endl;
+                break;
+            case 8:
+                d.clear();
+                break;
+            case 9:
+                return 0;
+            default:
+                cout << "Недопустимый выбор!" << endl;
+                break;
+        }
+    }
+
+    return 0;
+}
