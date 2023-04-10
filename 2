@@ -8,8 +8,8 @@
 using namespace std;
 
 int main() {
-    ifstream inputFile("input.txt"); // открываем файл для чтения
-    if (!inputFile.is_open()) { // проверяем, удалось ли открыть файл
+    ifstream inputFile("input.txt"); 
+    if (!inputFile.is_open()) { 
         cout << "Не удалось открыть файл!" << endl;
         return 1;
     }
@@ -17,11 +17,11 @@ int main() {
     vector<int> vec;
 
     int num;
-    while (inputFile >> num) { // считываем числа из файла, пока не достигнем конца файла
+    while (inputFile >> num) { 
         vec.push_back(num);
     }
 
-    inputFile.close(); // закрываем файл
+    inputFile.close(); 
 
     cout << "Исходный вектор: ";
     for (int i = 0; i < vec.size(); i++) {
