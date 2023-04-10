@@ -2,3 +2,59 @@
 превышающие значение k и вывести вектор на экран. 
 Посчитать в полученном векторе количество элементов, равных значению N.
 
+#include <iostream>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    ifstream inputFile("input.txt"); 
+    if (!inputFile.is_open()) { 
+        cout << "Не удалось открыть файл!" << endl;
+        return 1;
+    }
+
+    vector<int> vec;
+
+    int num;
+    while (inputFile >> num) { 
+        vec.push_back(num);
+    }
+
+    inputFile.close(); 
+
+    cout << "Исходный вектор: ";
+    for (int i = 0; i < vec.size(); i++) {
+        cout << vec[i] << " ";
+    }
+    cout << endl;
+
+    int k = 10; // задаем значение k
+    vector<int>::iterator it = vec.begin(); 
+    while (it != vec.end()) { // проходим по вектору, удаляя элементы > k
+        if (*it > k) {
+            it = vec.erase(it);
+        } else {
+            it++;
+        }
+    }
+
+    cout << "Измененный вектор: ";
+    for (int i = 0; i < vec.size(); i++) {
+        cout << vec[i] << " ";
+    }
+    cout << endl;
+
+    int N = 5; // задаем значение N
+    int count = 0; // создаем счетчик
+    for (int i = 0; i < vec.size(); i++) { // проходим по век сount = N
+        if (vec[i] == N) {
+            count++;
+        }
+    }
+
+    cout << "Количество элементов, равных " << N << ": " << count << endl;
+
+    return 0;
+}
